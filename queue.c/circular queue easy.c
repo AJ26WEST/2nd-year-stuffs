@@ -8,7 +8,7 @@ void enqueue(int x)
 {
     if (count == n) 
     {
-        printf("Queue is full!\n");
+        printf("Queue is full!, OVERFLOW CONDITION\n");
         return;
     }
     queue[rear] = x;
@@ -19,7 +19,7 @@ void dequeue()
 {
     if (count == 0) 
     {
-        printf("Queue is empty!\n");
+        printf("Queue is empty!,UNDERFLOW CONDITION\n");
         return;
     }
     int x = queue[front];
