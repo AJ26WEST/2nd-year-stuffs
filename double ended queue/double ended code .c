@@ -78,14 +78,15 @@ void display() {
     if (front == -1) {
         printf("Deque is empty\n");
     } else {
-        printf("Deque elements:\n");
+        printf("Deque elements: ");
         int i = front;
         while (1) {
-            printf("%d\t", dq[i]);
-            if (i == rear) break;
+            printf("%d", dq[i]);
+            if (i == rear) break; // Stop after printing the last element
+            printf(" -> "); // Print arrow between elements
             i = (i + 1) % N;
         }
-        printf("\n");
+        printf(" -> NULL\n"); // Print NULL at the end
     }
 }
 
