@@ -9,7 +9,7 @@ int main() {
     count += 2;  // 1 for scanf, 1 for assignment of n
 
     int array[n];
-    space = n * sizeof(int) + 4 * sizeof(int); // Space for array + 4 integer variables
+    space = n * sizeof(int) + 6 * sizeof(int); // Space for array + 4 integer variables
 
     // Get the elements of the array
     printf("Enter elements:\n");
