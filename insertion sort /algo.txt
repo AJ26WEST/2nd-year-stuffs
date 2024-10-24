@@ -1,0 +1,22 @@
+Algorithm: Insertion Sort
+Input: An array A of size n.
+
+Output: The array A sorted in ascending order.
+
+Step 1: Start with the second element in the array (index 1) as the key element. Assume that the first element (index 0) is already sorted.
+
+Step 2: Iterate through the array from the second element (i = 1 to n-1):
+
+Let the current element be the key (i.e., key = A[i]).
+Set j = i - 1.
+Step 3: Compare key with the elements in the sorted portion of the array (i.e., A[0] to A[i-1]):
+
+While j >= 0 and A[j] > key:
+Shift A[j] one position to the right (i.e., A[j+1] = A[j]).
+Decrement j by 1 (j = j - 1).
+Step 4: Insert the key into the correct position in the sorted portion of the array:
+
+Place key at position A[j+1].
+Step 5: Repeat Steps 2–4 for all elements in the array until the array is sorted.
+
+Step 6: After completing the iteration for all elements, the array is sorted in ascending order.
