@@ -1,0 +1,23 @@
+Algorithm: DFS Using Stack
+Input: An adjacency matrix graph representing a graph of numVertices vertices, and a starting vertex start.
+
+Output: A sequence of vertices visited during the Depth-First Search (DFS).
+
+Step 1: Initialize an empty stack s and an array visited[] of size numVertices to keep track of visited vertices.
+
+Set all values in visited[] to false (no vertex is visited initially).
+Step 2: Push the starting vertex start onto the stack s.
+
+Step 3: While the stack is not empty:
+
+Pop the top vertex currentVertex from the stack.
+If currentVertex has not been visited:
+Mark it as visited (visited[currentVertex] = true).
+Print the vertex (currentVertex).
+Step 4: For each vertex adjacent to currentVertex (from numVertices - 1 down to 0):
+
+If the vertex has an edge (graph[currentVertex][i] == 1) and has not been visited (visited[i] == false):
+Push the vertex i onto the stack.
+Step 5: Repeat Steps 3–4 until the stack becomes empty.
+
+Step 6: The DFS is complete when all reachable vertices from the start vertex have been visited.
