@@ -1,0 +1,24 @@
+Algorithm: BFS Using Queue
+Input: An adjacency matrix graph representing a graph of numVertices vertices, and a starting vertex start.
+
+Output: A sequence of vertices visited during the Breadth-First Search (BFS).
+
+Step 1: Initialize an empty queue q and an array visited[] of size numVertices to keep track of visited vertices.
+
+Set all values in visited[] to false (no vertex is visited initially).
+Initialize the queue q with front = -1 and rear = -1.
+Step 2: Enqueue the starting vertex start into the queue q and mark it as visited (visited[start] = true).
+
+Step 3: While the queue q is not empty:
+
+Dequeue the front vertex currentVertex from the queue q.
+Print the dequeued vertex (currentVertex).
+Step 4: For each vertex adjacent to currentVertex (from 0 to numVertices - 1):
+
+If there is an edge (graph[currentVertex][i] == 1) and the vertex i has not been visited (visited[i] == false):
+Enqueue the vertex i into the queue.
+Mark the vertex i as visited (visited[i] = true).
+Step 5: Repeat Steps 3–4 until the queue becomes empty.
+
+Step 6: The BFS is complete when all reachable vertices from the start vertex have been visited.
+
