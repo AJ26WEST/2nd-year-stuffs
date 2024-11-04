@@ -3,7 +3,6 @@
 
 #define MAX 100 // Define the maximum number of vertices
 
-// Queue structure for BFS
 typedef struct {
     int items[MAX]; // Array to store the elements in the queue
     int front;      // Front index of the queue
