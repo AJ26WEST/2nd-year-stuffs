@@ -2,12 +2,13 @@
 #include <stdlib.h>
 
 struct node {
-    int val;
-    struct node *link;
+    int data;
+    struct node *next;
 };
 
 struct node *head = NULL;
 
+// Insert at the beginning
 void Insert_Begin() {
     struct node *temp = (struct node *)malloc(sizeof(struct node));
     if (!temp) {
@@ -16,11 +17,12 @@ void Insert_Begin() {
     }
 
     printf("Enter the element to insert: ");
-    scanf("%d", &temp->val);
-    temp->link = head;
+    scanf("%d", &temp->data);
+    temp->next = head;
     head = temp;
 }
 
+// Insert at the end
 void Insert_End() {
     struct node *temp = (struct node *)malloc(sizeof(struct node));
     if (!temp) {
@@ -29,20 +31,21 @@ void Insert_End() {
     }
 
     printf("Enter the element to insert: ");
-    scanf("%d", &temp->val);
-    temp->link = NULL;
+    scanf("%d", &temp->data);
+    temp->next = NULL;
 
     if (head == NULL) {
         head = temp;
     } else {
         struct node *ptr = head;
-        while (ptr->link != NULL) {
-            ptr = ptr->link;
+        while (ptr->next != NULL) {
+            ptr = ptr->next;
         }
-        ptr->link = temp;
+        ptr->next = temp;
     }
 }
 
+// Insert at a specific position
 void Insert_AnyPos() {
     int key;
     printf("Enter the element to insert: ");
@@ -53,32 +56,33 @@ void Insert_AnyPos() {
         printf("Memory overflow\n");
         return;
     }
-    temp->val = key;
+    temp->data = key;
 
     int pos;
     printf("Enter position: ");
     scanf("%d", &pos);
 
     if (pos == 1) {
-        temp->link = head;
+        temp->next = head;
         head = temp;
         return;
     }
 
     struct node *ptr = head;
     for (int i = 1; i < pos - 1 && ptr != NULL; i++) {
-        ptr = ptr->link;
+        ptr = ptr->next;
     }
 
     if (ptr == NULL) {
         printf("Position is out of bounds\n");
         free(temp);
     } else {
-        temp->link = ptr->link;
-        ptr->link = temp;
+        temp->next = ptr->next;
+        ptr->next = temp;
     }
 }
 
+// Delete from the beginning
 void Delete_Begin() {
     if (head == NULL) {
         printf("Memory Underflow\n");
@@ -86,10 +90,11 @@ void Delete_Begin() {
     }
     
     struct node *temp = head;
-    head = head->link;
+    head = head->next;
     free(temp);
 }
 
+// Delete from the end
 void Delete_End() {
     if (head == NULL) {
         printf("Memory Underflow\n");
@@ -99,21 +104,22 @@ void Delete_End() {
     struct node *ptr = head;
     struct node *temp = NULL;
 
-    if (ptr->link == NULL) {
+    if (ptr->next == NULL) {
         free(head);
         head = NULL;
         return;
     }
 
-    while (ptr->link != NULL) {
+    while (ptr->next != NULL) {
         temp = ptr;
-        ptr = ptr->link;
+        ptr = ptr->next;
     }
     
-    temp->link = NULL;
+    temp->next = NULL;
     free(ptr);
 }
 
+// Delete from a specific position
 void Delete_AnyPos() {
     int pos;
     printf("Enter position to delete: ");
@@ -127,7 +133,7 @@ void Delete_AnyPos() {
     struct node *ptr = head;
 
     if (pos == 1) {
-        head = head->link;
+        head = head->next;
         free(ptr);
         return;
     }
@@ -135,7 +141,7 @@ void Delete_AnyPos() {
     struct node *prev = NULL;
     for (int i = 1; i < pos && ptr != NULL; i++) {
         prev = ptr;
-        ptr = ptr->link;
+        ptr = ptr->next;
     }
 
     if (ptr == NULL) {
@@ -143,10 +149,11 @@ void Delete_AnyPos() {
         return;
     }
 
-    prev->link = ptr->link;
+    prev->next = ptr->next;
     free(ptr);
 }
 
+// Display all elements in the linked list
 void Display() {
     struct node *ptr = head;
 
@@ -157,8 +164,8 @@ void Display() {
 
     printf("List Elements: ");
     while (ptr != NULL) {
-        printf("%d", ptr->val);
-        ptr = ptr->link;
+        printf("%d", ptr->data);
+        ptr = ptr->next;
         if (ptr != NULL) {
             printf(" -> ");
         }
@@ -172,10 +179,10 @@ int main() {
     while (1) {
         printf("\n1: Insertion\n2: Deletion\n3: Display\n4: Exit\nChoice: ");
         scanf("%d", &choice);
+        int pos;
         switch (choice) {
             case 1:
                 printf("Select Position:\n1: Front\n2: End\n3: Between Nodes\nChoice: ");
-                int pos;
                 scanf("%d", &pos);
                 if (pos == 1) Insert_Begin();
                 else if (pos == 2) Insert_End();
